@@ -1,0 +1,127 @@
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    overflow: hidden;
+    counter-reset: hit;
+    position: relative;
+    background-image: url(img/Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_9.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 bottom;
+    color: #fff;
+    cursor: url("img/target.png"),crosshair;
+}
+
+input:checked{
+    counter-increment: hit;
+}
+
+input:checked + label{
+    display: none;
+}
+
+.result{
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.result::after{
+    content: counter(hit);
+}
+
+.duck{
+    width: 62px;
+    height: 56px;
+    /* outline: 1px solid red; */
+    overflow: hidden;
+    position: relative;
+    top: 50%;
+    left: -80px;
+}
+
+.duck label{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("img/duck_hunt_bird_big2.gif");
+    background-repeat: no-repeat;
+    /* background-size: 50%; */
+    cursor: url("img/target.png"),crosshair;
+}
+
+.duck input{
+    position: absolute;
+    left: -200px;
+}
+
+.duck1{
+    /* animation: fly1 10s 3; */
+    animation-name: fly1;
+    animation-duration: 10s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+
+}
+
+.duck2{
+    animation: fly1 8s 3;
+    animation-delay: 2s
+}
+
+.duck3{
+    animation: fly1 5s 3;
+    animation-delay: 5s
+}
+
+.duck4{
+    animation-name: fly2;
+    animation-duration: 10s;
+    animation-timing-function: cubic-bezier(.61,.07,.52,.73);
+    animation-delay: 10s;
+}
+
+@keyframes fly1 {
+    0%{top: 50%;
+        left: 1%;}
+    25%{top: 15%;
+        left: 25%;}
+    50%{top: 85%;
+        left: 65%;
+        transform: rotate(180deg);}
+    75%{top: 20%;
+        left: 25%;
+        transform: rotate(180deg);}
+    100%{top: 95%;
+        left: 120%;}
+}
+
+@keyframes fly2 {
+    0%{top: 50%;
+        left: 3%;
+    }
+
+    50%{top: 5%;
+        left: 40%
+    }
+    100%{top: 70%;
+        left: 105%
+    }
+}
